@@ -14,11 +14,16 @@
 
 .videocontainer .box {
     position: relative;
-    width: 48%;
+    width: 45%;
     height: auto;
     filter: grayscale(1);
     display: flex;
+    margin: 10px;
     flex-direction: column;
+}
+
+.box:last-child {
+    margin-bottom: 1.5rem;
 }
 
 .videocontainer .box:hover {
