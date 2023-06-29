@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .videocontainer {
     display: flex;
     flex-wrap: wrap;
@@ -20,6 +14,10 @@
     display: flex;
     margin: 10px;
     flex-direction: column;
+}
+
+.box:not(:last-child) {
+    margin-bottom: 1.5rem;
 }
 
 .box:last-child {
