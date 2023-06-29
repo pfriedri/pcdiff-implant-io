@@ -7,13 +7,18 @@
 .videocontainer {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
     width: 100%;
 }
 
 .videocontainer .box {
     position: relative;
-    width: 50%;
+    width: 48%;
+    height: auto;
     filter: grayscale(1);
+    display: flex;
+    flex-direction: column;
 }
 
 .videocontainer .box:hover {
