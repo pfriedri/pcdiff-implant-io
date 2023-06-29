@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Point Cloud Diffusion Models for Automatic Implant Generation.">
+    <meta name="keywords" content="Implants, Diffusion Model, Voxelization">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Point Cloud Diffusion Models for Automatic Implant Generation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/mousehover.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="https://pfriedri.github.io">
+                    <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+          More Research
+        </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://pfriedri.github.io">
+            Paul Friedrich - Website
+          </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Point Cloud Diffusion Models for Automatic Implant Generation</h1>
+                        <h4 class="title is-4">MICCAI 2023</h4>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+              <a href="https://pfriedri.github.io">Paul Friedrich</a><sup>1</sup>,</span>
+                            <span class="author-block">
+              <a href="https://dbe.unibas.ch/en/persons/julia-wolleb/">Julia Wolleb</a><sup>1</sup>,</span>
+                            <span class="author-block">
+              <a href="https://dbe.unibas.ch/en/persons/florentin-bieder/">Florentin Bieder</a><sup>1</sup>,
+            </span>
+                            <span class="author-block">
+              <a href="https://dbe.unibas.ch/en/research/regenerative-surgery/swiss-mam-medical-additive-manufacturing-research-group/group-members/florian-m-thieringer/">Florian M. Thieringer</a><sup>1, 2</sup>,
+            </span>
+                            <span class="author-block">
+              <a href="https://dbe.unibas.ch/en/persons/philippe-claude-cattin/">Philippe C. Cattin</a><sup>1</sup>,
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>University of Basel, Department of Biomedical Engineering,</span>
+                            <span class="author-block"><sup>2</sup>University Hospital Basel</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                <a href="https://arxiv.org/pdf/2303.08061"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                                <span>Paper</span>
+                                </a>
+                                </span>
+                                <span class="link-block">
+                <a href="https://arxiv.org/abs/2303.08061"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                                <span>arXiv</span>
+                                </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <span class="link-block">
+                <a href="https://github.com/pfriedri/diffusion-implants"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                                <span>Code</span>
+                                </a>
+                                </span>
+                                <!-- Dataset Link. -->
+                                <span class="link-block">
+                <a href="https://www.sciencedirect.com/science/article/pii/S2352340921001864"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                                <span>Data</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="eyecatcher">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <img src="images/OverviewPipeline.jpeg">
+                <h2 class="subtitle has-text-centered">
+                    Our approach combines a point cloud diffusion model and a voxelization network to produce reasonable implant designs for segmented skulls showing bone defects.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Advances in 3D printing of biocompatible materials make patient-specific implants increasingly popular. The design of these implants is, however, still a tedious and largely manual process. Existing approaches to automate implant generation are mainly
+                            based on 3D U-Net architectures on downsampled or patch-wise data, which can result in a loss of detail or contextual information. Following the recent success of Diffusion Probabilistic Models, we propose a novel approach
+                            for implant generation based on a combination of 3D point cloud diffusion models and voxelization networks. Due to the stochastic sampling process in our diffusion model, we can propose an ensemble of different implants per
+                            defect, from which the physicians can choose the most suitable one. We evaluate our method on the SkullBreak and SkullFix datasets, generating high-quality implants and achieving competitive evaluation scores.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Point Cloud Diffusion Model for Shape Reconstruction</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Since performing the anatomy reconstruction task in a high resolution voxel space would be memory inefficient and computationally expensive, we propose a method that builds upon a sparse surface point cloud representation of the input anatomy. This point
+                            cloud, which can be obtained from the defective segmentation mask, serves as input to a Denoising Diffusion Probabilistic Model (DDPM) that, conditioned on this input, reconstructs the complete anatomy by generating missing
+                            points. This conditional generation process is shown below.
+                        </p>
+                    </div>
+                    <video autoplay muted loop playsinline width="80%">
+                        <source src="videos/DiffMov.mp4" 
+                        type="video/mp4">
+                    </video>
+                    <h2 class="subtitle has-text-centered">
+                        Iterative denoising of the randomly sampled starting points <i>(black)</i>. This denoising is conditioned on the known points <i>(coloured)</i> and therefore capable of reconstructing the shape of the skull.
+                    </h2>
+                </div>
+            </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Voxelization Network</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Since we determine the implant design by the Boolean subtraction between completed and defective skull in voxel space, the point cloud representing the completed shape must be transferred back to a voxel representation. We therefore train an additional
+                            neural network combined with a differentiable Poisson solver (DPSR) proposed in "Shape As Points: A Differentiable Poisson Solver". The network learns to upsample the input point cloud and estimate normal vectors for every
+                            point. This upsampled point cloud is then passed through the differentiable Poisson solver to obtain a dense indicator grid/ voxel representation of the input. Training this upsampling and normal estimation network as well
+                            as the used encoder is particularly easy due to the differentiability of the used Poisson solver.
+                        </p>
+                    </div>
+                    <a href="images/Voxelization.jpeg"><img src="images/Voxelization.jpeg" class="hoverZoomLink"></a>
+                    <h2 class="subtitle has-text-centered ">
+                        The voxelization pipeline consisting of neural networks &phi;, f, g with trainable parameters &theta; and a differentiable Poisson solver (DPSR).
+                    </h2>
+                </div>
+            </div>
+    </section>
+
+
+    <section class="section ">
+        <div class="container is-max-desktop ">
+            <div class="columns is-centered has-text-centered ">
+                <div class="column ">
+                    <h2 class="title is-3 ">Results</h2>
+                    <p>
+                        We trained and tested our method on the SkullBreak and SkullFix datasets. Our method reliably reconstructs defects of various sizes, as well as complicated geometric structures. Some examples for different defects from the SkullBreak dataset are shown
+                        below. Further results from the different datasets can be found underneath.
+                    </p>
+                    <div class="videocontainer ">
+                        <div class="box ">
+                            <video src="videos/result_01.mp4 " type="video/mp4 " loop class="clip " muted></video>
+                        </div>
+                        <div class="box ">
+                            <video src="videos/result_02.mp4 " type="video/mp4 " loop class="clip " muted></video>
+                        </div>
+                        <div class="box ">
+                            <video src="videos/result_03.mp4 " type="video/mp4 " loop class="clip " muted></video>
+                        </div>
+                        <div class="box ">
+                            <video src="videos/result_04.mp4 " type="video/mp4 " loop class="clip " muted></video>
+                        </div>
+                    </div>
+                    <script>
+                        const clip = document.querySelectorAll('.clip');
+                        for (let i = 0; i < clip.length; i++) {
+                            clip[i].addEventListener('mouseenter',
+                                function(e) {
+                                    clip[i].play()
+                                })
+
+                            clip[i].addEventListener('mouseout',
+                                function(e) {
+                                    clip[i].pause()
+                                })
+                        }
+                    </script>
+                    <h2 class="subtitle has-text-centered ">
+                        Result for different defects from the SkullBreak dataset. DDPM sampling (T=1000).
+                    </h2>
+                    <details>
+                        <summary>
+                            <strong>Additional Results - SkullBreak</strong>
+                        </summary>
+                        <div class="videocontainer ">
+                            <div class="box ">
+                                <img src="images/supp_bil_9_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_bil_45_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_fronto_9_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_fronto_27_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_parie_9_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_parie_49_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_rand1_9_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_rand1_57_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_rand2_9_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_rand2_30_r.png ">
+                            </div>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>
+                            <strong>Additional Results - SkullFix</strong>
+                        </summary>
+                        <div class="videocontainer ">
+                            <div class="box ">
+                                <img src="images/supp_sf3_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf10_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf11_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf21_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf30_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf52_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf53_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf67_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf73_r.png ">
+                            </div>
+                            <div class="box ">
+                                <img src="images/supp_sf84_r.png ">
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+    </section>
+
+
+    <section class="section " id="BibTeX ">
+        <div class="container is-max-desktop content ">
+            <h2 class="title ">BibTeX</h2>
+            <pre><code>@misc{friedrich2023diffusionimplant,
+    author={Paul Friedrich and Julia Wolleb and Florentin Bieder and Florian M. Thieringer and Philippe C. Cattin},
+    title={Point Cloud Diffusion Models for Automatic Implant Generation}, 
+    year={2023},
+    eprint={2303.08061},
+    archivePrefix={arXiv},
+    primaryClass={eess.IV}}</code></pre>
+        </div>
+    </section>
+
+    <section class="section " id="Acknowledgements ">
+        <div class="container is-max-desktop content ">
+            <h2 class="title ">Acknowledgements</h2>
+            <p>This work was financially supported by the <a href="https://www.wernersiemens-stiftung.ch/en/ ">Werner Siemens Foundation</a> through the <a href="https://www.wernersiemens-stiftung.ch/en/projects/miracle-ii ">MIRACLE II</a> project.</p>
+        </div>
+    </section>
+
+    <footer class="footer ">
+        <div class="container ">
+            <div class="content has-text-centered ">
+                <a class="icon-link " href="https://arxiv.org/abs/2303.08061 ">
+                    <i class="fas fa-file-pdf "></i>
+                </a>
+                <a class="icon-link " href="https://github.com/pfriedri " class="external-link " disabled>
+                    <i class="fab fa-github "></i>
+                </a>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-8 ">
+                    <div class="content ">
+                        <p>
+                            This website is licensed under a <a rel="license " href="http://creativecommons.org/licenses/by-sa/4.0/ ">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p>
+                            This webpage is adepted from the <a href="https://github.com/nerfies/nerfies.github.io ">Nerfies</a> template.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

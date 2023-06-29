@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.videocontainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.videocontainer .box {
+    position: relative;
+    width: 50%;
+    filter: grayscale(1);
+}
+
+.videocontainer .box:hover {
+    filter: grayscale(0);
+}
+
+details {
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    padding: 2em 2em 2em;
+    cursor: pointer;
+}
