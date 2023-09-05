@@ -49,7 +49,7 @@
           More Research
         </a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item" href="https://github.com/cian-unibas">
+                        <a class="navbar-item" href="https://dbe.unibas.ch/en/cian/">
             CIAN - Research
           </a>
                     </div>
@@ -108,7 +108,7 @@
                                 <span>arXiv</span>
                                 </a>
                                 </span>
-                                <!-- Video Link. -->
+                                <!-- Code Link. -->
                                 <span class="link-block">
                 <a href="https://github.com/pfriedri/pcdiff-implant"
                    class="external-link button is-normal is-rounded is-dark">
@@ -116,6 +116,16 @@
                       <i class="fab fa-github"></i>
                   </span>
                                 <span>Code</span>
+                                </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                    <a href="https://youtu.be/6oN8CAqCJes?si=rBBvOdLDQXptXEK-"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fab fa-youtube"></i>
+                      </span>
+                                <span>Video</span>
                                 </a>
                                 </span>
                                 <!-- Dataset Link. -->
@@ -168,21 +178,34 @@
 
     <section class="section">
         <div class="container is-max-desktop">
+            <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <h2 class="title is-3">Point Cloud Diffusion Model for Shape Reconstruction</h2>
-                    <div class="content has-text-justified">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="content has-text-centered">
+                        <iframe width="720" height="405" src="https://www.youtube.com/embed/6oN8CAqCJes?si=1PODln_3UE1S80y-" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="section ">
+        <div class="container is-max-desktop ">
+            <div class="columns is-centered has-text-centered ">
+                <div class="column ">
+                    <h2 class="title is-3 ">Point Cloud Diffusion Model for Shape Reconstruction</h2>
+                    <div class="content has-text-justified ">
                         <p>
                             Since performing the anatomy reconstruction task in a high resolution voxel space would be memory inefficient and computationally expensive, we propose a method that builds upon a sparse surface point cloud representation of the input anatomy. This point
                             cloud, which can be obtained from the defective segmentation mask, serves as input to a Denoising Diffusion Probabilistic Model (DDPM) that, conditioned on this input, reconstructs the complete anatomy by generating missing
                             points. This conditional generation process is shown below.
                         </p>
                     </div>
-                    <video autoplay muted loop playsinline width="80%">
-                        <source src="videos/DiffMov.mp4" 
-                        type="video/mp4">
+                    <video autoplay muted loop playsinline width="80% ">
+                        <source src="videos/DiffMov.mp4 " 
+                        type="video/mp4 ">
                     </video>
-                    <h2 class="subtitle has-text-centered">
+                    <h2 class="subtitle has-text-centered ">
                         Iterative denoising of the randomly sampled starting points <i>(black)</i>. This denoising is conditioned on the known points <i>(coloured)</i> and therefore capable of reconstructing the shape of the skull.
                     </h2>
                 </div>
@@ -190,20 +213,20 @@
     </section>
 
 
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <h2 class="title is-3">Voxelization Network</h2>
-                    <div class="content has-text-justified">
+    <section class="section ">
+        <div class="container is-max-desktop ">
+            <div class="columns is-centered has-text-centered ">
+                <div class="column ">
+                    <h2 class="title is-3 ">Voxelization Network</h2>
+                    <div class="content has-text-justified ">
                         <p>
                             Since we determine the implant design by the Boolean subtraction between completed and defective skull in voxel space, the point cloud representing the completed shape must be transferred back to a voxel representation. We therefore train an additional
-                            neural network combined with a differentiable Poisson solver (DPSR) proposed in "Shape As Points: A Differentiable Poisson Solver". The network learns to upsample the input point cloud and estimate normal vectors for every
+                            neural network combined with a differentiable Poisson solver (DPSR) proposed in "Shape As Points: A Differentiable Poisson Solver ". The network learns to upsample the input point cloud and estimate normal vectors for every
                             point. This upsampled point cloud is then passed through the differentiable Poisson solver to obtain a dense indicator grid/ voxel representation of the input. Training this upsampling and normal estimation network as well
                             as the used encoder is particularly easy due to the differentiability of the used Poisson solver.
                         </p>
                     </div>
-                    <a href="images/Voxelization.jpeg"><img src="images/Voxelization.jpeg" class="hoverZoomLink"></a>
+                    <a href="images/Voxelization.jpeg "><img src="images/Voxelization.jpeg " class="hoverZoomLink "></a>
                     <h2 class="subtitle has-text-centered ">
                         The voxelization pipeline consisting of neural networks &phi;, f, g with trainable parameters &theta; and a differentiable Poisson solver (DPSR).
                     </h2>
@@ -217,10 +240,12 @@
             <div class="columns is-centered has-text-centered ">
                 <div class="column ">
                     <h2 class="title is-3 ">Results</h2>
-                    <p>
-                        We trained and tested our method on the SkullBreak and SkullFix datasets. Our method reliably reconstructs defects of various sizes, as well as complicated geometric structures. Some examples for different defects from the SkullBreak dataset are shown
-                        below. Further results from the different datasets can be found underneath.
-                    </p>
+                    <div class="content has-text-justified ">
+                        <p>
+                            We trained and tested our method on the SkullBreak and SkullFix datasets. Our method reliably reconstructs defects of various sizes, as well as complicated geometric structures. Some examples for different defects from the SkullBreak dataset are shown
+                            below. Further results from the different datasets can be found underneath.
+                        </p>
+                    </div>
                     <div class="videocontainer ">
                         <div class="box ">
                             <video src="videos/result_01.mp4 " type="video/mp4 " loop class="clip " muted></video>
@@ -334,13 +359,12 @@
     <section class="section " id="BibTeX ">
         <div class="container is-max-desktop content ">
             <h2 class="title ">BibTeX</h2>
-            <pre><code>@misc{friedrich2023diffusionimplant,
-    author={Paul Friedrich and Julia Wolleb and Florentin Bieder and Florian M. Thieringer and Philippe C. Cattin},
-    title={Point Cloud Diffusion Models for Automatic Implant Generation}, 
-    year={2023},
-    eprint={2303.08061},
-    archivePrefix={arXiv},
-    primaryClass={eess.IV}}</code></pre>
+            <pre><code>@article{friedrich2023point,
+                title={Point Cloud Diffusion Models for Automatic Implant Generation},
+                author={Friedrich, Paul and Wolleb, Julia and Bieder, Florentin and Thieringer, Florian M and Cattin, Philippe C},
+                journal={arXiv preprint arXiv:2303.08061},
+                year={2023}
+              }</code></pre>
         </div>
     </section>
 
