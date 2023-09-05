@@ -34,3 +34,8 @@ details {
     padding: 2em 2em 2em;
     cursor: pointer;
 }
+
+iframe {
+    aspect-ratio: 16/9;
+    width: 100%;
+}
