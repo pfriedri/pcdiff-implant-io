@@ -36,7 +36,8 @@
           "HTML-CSS": { fonts: ["TeX"] }
         });
       </script>
-      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -223,10 +224,10 @@
                     </h2>
                     <div class="content has-text-justified ">
                         <p>
-                            The forward, as well as the reverse diffusion process are modeled as Markov chains with the transitions $q(\boldsymbol{\tilde{x}}_t|\boldsymbol{\tilde{x}}_{t-1})$ and $p_{\theta}(\boldsymbol{\tilde{x}}_{t-1}|\boldsymbol{\tilde{x}}_t, \boldsymbol{c}_0)$ being parameterized Gaussians with a pre-defined variance schedule $\beta_1, ..., \beta_T$.
-                            The network $\epsilon_\theta(\boldsymbol{\tilde{x}}_t, \boldsymbol{c}_0, t)$ learns the noise to be removed from a noisy point cloud $\boldsymbol{\tilde{x}}_t$. This denoising is conditioned on the points belonging to the defective anatomical structure $\boldsymbol{c}_0$. During inference, we randomly sample points for $\boldsymbol{\tilde{x}}_T \sim \mathcal{N}(0, \boldsymbol{I})$ and go through the whole reverse diffusion process for al timesteps $t = T, ..., 1$:
+                            The forward, as well as the reverse diffusion process are modeled as Markov chains with the transitions \(q(\boldsymbol{\tilde{x}}_t|\boldsymbol{\tilde{x}}_{t-1})\) and \(p_{\theta}(\boldsymbol{\tilde{x}}_{t-1}|\boldsymbol{\tilde{x}}_t, \boldsymbol{c}_0)\) being parameterized Gaussians with a pre-defined variance schedule \(\beta_1, ..., \beta_T\).
+                            The network \(\epsilon_\theta(\boldsymbol{\tilde{x}}_t, \boldsymbol{c}_0, t)\) learns the noise to be removed from a noisy point cloud \(\boldsymbol{\tilde{x}}_t\). This denoising is conditioned on the points belonging to the defective anatomical structure \(\boldsymbol{c}_0\). During inference, we randomly sample some points \(\boldsymbol{\tilde{x}}_T \sim \mathcal{N}(0, \boldsymbol{I})\) and go through the whole reverse diffusion process with \(t = T, ..., 1\):
                             $$ \boldsymbol{\tilde{x}}_{t-1} =\frac{1}{\sqrt{\alpha_t}}\biggl(\boldsymbol{\tilde{x}}_t-\frac{1-\alpha_t}{\sqrt{1-\tilde{\alpha}}_t}\epsilon_\theta(\boldsymbol{\tilde{x}}_t, \boldsymbol{c}_0, t)\biggr)+\sqrt{\beta_t}\boldsymbol{z} $$
-                            We thereby produce a completed version of the defective anatomical structure. The points $\boldsymbol{c}_0$ belonging to the defective anatomical structure remain unchanged during the whole process.
+                            We thereby produce a completed version of the defective anatomical structure. The points \(\boldsymbol{c}_0\) belonging to the defective anatomical structure remain unchanged during the whole process.
                         </p>
                     </div>
                     <a href="images/Diffusion.jpeg "><img src="images/Diffusion.jpeg " class="hoverZoomLink "></a>
@@ -253,7 +254,7 @@
                     </div>
                     <a href="images/Voxelization.jpeg "><img src="images/Voxelization.jpeg " class="hoverZoomLink "></a>
                     <h2 class="subtitle has-text-centered ">
-                        The voxelization pipeline consisting of neural networks &phi;, f, g with trainable parameters &theta; and a differentiable Poisson solver (DPSR).
+                        The voxelization pipeline consisting of neural networks \(\phi\), \(f\), \(g\) with trainable parameters \(\theta\) and a differentiable Poisson solver (DPSR).
                     </h2>
                 </div>
             </div>
