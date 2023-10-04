@@ -24,6 +24,15 @@
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 
 <body>
@@ -91,7 +100,7 @@
                             <div class="publication-links">
                                 <!-- PDF Link. -->
                                 <span class="link-block">
-                <a href="https://arxiv.org/pdf/2303.08061"
+                <a href="https://doi.org/10.1007/978-3-031-43996-4_11"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -207,6 +216,16 @@
                     </video>
                     <h2 class="subtitle has-text-centered ">
                         Iterative denoising of the randomly sampled starting points <i>(black)</i>. This denoising is conditioned on the known points <i>(coloured)</i> and therefore capable of reconstructing the shape of the skull.
+                    </h2>
+                    <div class="content has-text-justified ">
+                        <p>
+                            The forward, as well as the reverse diffusion process are modeled as Markov chains with the transitions $q(\boldsymbol{\tilde{x}}_t|\boldsymbol{\tilde{x}}_{t-1})$ and $p_{\theta}(\boldsymbol{\tilde{x}}_{t-1}|\boldsymbol{\tilde{x}}_t, \boldsymbol{c}_0)$ being parameterized Gaussians with a pre-defined variance schedule $\beta_1, ..., \beta_T$.
+                            The network $\epsilon_\theta(\boldsymbol{\tilde{x}}_t, \boldsymbol{c}_0, t)$ learns the noise to be removed from a noisy point cloud $\boldsymbol{\tilde{x}}_t$. This denoising is conditioned on the points belonging to the defective anatomical structure $\boldsymbol{c}_0$. During inference, we randomly sample points for $\boldsymbol{\tilde{x}}_t$ and go through the whole reverse diffusion process. We thereby produce a completed version of the defective anatomical structure.
+                        </p>
+                    </div>
+                    <a href="images/Diffusion.jpeg "><img src="images/Diffusion.jpeg " class="hoverZoomLink "></a>
+                    <h2 class="subtitle has-text-centered ">
+                        Overview of the Denoising Diffusion Probabilistic Model (DDPM) used for the anatomy reconstruction task in the point cloud space.
                     </h2>
                 </div>
             </div>
@@ -359,11 +378,15 @@
     <section class="section " id="BibTeX ">
         <div class="container is-max-desktop content ">
             <h2 class="title ">BibTeX</h2>
-            <pre><code>@article{friedrich2023point,
-                title={Point Cloud Diffusion Models for Automatic Implant Generation},
-                author={Friedrich, Paul and Wolleb, Julia and Bieder, Florentin and Thieringer, Florian M and Cattin, Philippe C},
-                journal={arXiv preprint arXiv:2303.08061},
-                year={2023}
+            <pre><code>@InProceedings{10.1007/978-3-031-43996-4_11,
+                author="Friedrich, Paul and Wolleb, Julia and Bieder, Florentin and Thieringer, Florian M. and Cattin, Philippe C.",
+                editor="Greenspan, Hayit and Madabhushi, Anant and Mousavi, Parvin and Salcudean, Septimiu and Duncan, James and Syeda-Mahmood, Tanveer and Taylor, Russell",
+                title="Point Cloud Diffusion Models for Automatic Implant Generation",
+                booktitle="Medical Image Computing and Computer Assisted Intervention -- MICCAI 2023",
+                year="2023",
+                publisher="Springer Nature Switzerland",
+                address="Cham",
+                pages="112--122",
               }</code></pre>
         </div>
     </section>
